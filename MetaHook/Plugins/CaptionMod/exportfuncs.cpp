@@ -53,7 +53,7 @@ void HUD_Init(void)
 	al_enable = gEngfuncs.pfnGetCvarPointer("al_enable");
 	cap_debug = gEngfuncs.pfnRegisterVariable("cap_show", "0", FCVAR_CLIENTDLL);
 	cap_enabled = gEngfuncs.pfnRegisterVariable("cap_enabled", "1", FCVAR_CLIENTDLL | FCVAR_ARCHIVE);
-	cap_max_distance = gEngfuncs.pfnRegisterVariable("cap_max_distance", "1500", FCVAR_CLIENTDLL | FCVAR_ARCHIVE);
+	cap_max_distance = gEngfuncs.pfnRegisterVariable("cap_max_distance", "2000", FCVAR_CLIENTDLL | FCVAR_ARCHIVE);
 	gEngfuncs.pfnAddCommand("cap_version", Cap_Version_f);
 }
 
