@@ -1,4 +1,4 @@
-#include <metahook.h>
+﻿#include <metahook.h>
 #include <vgui/VGUI.h>
 #include <vgui/IScheme.h>
 #include <vgui/ILocalize.h>
