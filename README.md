@@ -159,7 +159,11 @@ available value: alphafade / leftscan (Case-Insensitive)
 
 ## Detail about macro.csv(.xls .xlsx)
 
+<<<<<<< HEAD
 ### Macri Type:
+=======
+### Macro Type:
+>>>>>>> parent of 0fe7cba (Update README.md)
 
 regex: this is a perl regular expression that replace the untranslated Sentence (before transfered by VGUI Localization language files and after the Fill macros is executed) to the Destination Text with Source RegEx.
 
@@ -171,6 +175,7 @@ Used to identify a macro.
 
 ### Source RegEx:
 
+<<<<<<< HEAD
 see Macri Type
 
 ### Destination Text:
@@ -179,11 +184,28 @@ see Macri Type
 
 ### How to use a macro? add these in cell which is not in a sentence row.
 '''
+=======
+see Macro Type
+
+### Destination Text:
+
+see Macro Type
+
+### How to use a macro? 
+
+add these in cell which is not in a sentence row.
+
+```
+>>>>>>> parent of 0fe7cba (Update README.md)
 @use MacroName //to enable a macro
 @end MacroName //to disable an active macro
 @end //to disable the last activated macro
 @endall //to disable all active macros.
+<<<<<<< HEAD
 '''
+=======
+```
+>>>>>>> parent of 0fe7cba (Update README.md)
  
 # changelog:
 
