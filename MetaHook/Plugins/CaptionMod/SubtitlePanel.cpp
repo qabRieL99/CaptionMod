@@ -294,11 +294,6 @@ void SubtitlePanel::StartLine(CSubLine *Line)
 	//Add to the current playing line
 	m_Lines[m_Lines.AddToTail()] = Line;
 
-	if (Line->m_StartTime == 0)
-	{
-		Line->m_StartTime = cl_time;
-	}
-
 	//Give it the lastest endtime
 	Line->m_EndTime = max(Line->m_StartTime + Line->m_Duration, latestEndTime);
 
@@ -342,6 +337,7 @@ void SubtitlePanel::StartSubtitle(CDictionary *Dict, float flStartTime)
 		{
 			if (m_BackLines[i]->m_StartTime > flLatestStart)
 				flLatestStart = m_BackLines[i]->m_StartTime;
+
 		}
 		//Already in list, do not start one subtitle for twice at the same time.
 		if(m_BackLines[i]->m_Dict == Dict)
