@@ -50,13 +50,13 @@ public:
 	void FinalizeString(std::wstring &output);
 
 	dict_t					m_Type;
-	std::string				m_szTitle;
+	char					m_szTitle[64];
 	std::wstring			m_szSentence;
 	Color					m_Color;
 	float					m_flDuration;
 	std::wstring			m_szSpeaker;
 	float					m_flNextDelay;
-	std::string				m_szNext;
+	char					m_szNext[64];
 	CDictionary				*m_pNext;
 	client_textmessage_t	*m_pTextMessage;
 	textalign_t				m_iTextAlign;
