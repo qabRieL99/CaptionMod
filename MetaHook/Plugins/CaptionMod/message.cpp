@@ -9,7 +9,6 @@
 #include "Viewport.h"
 #include "message.h"
 #include "msghook.h"
-#include <algorithm>
 
 using namespace vgui;
 
@@ -396,7 +395,7 @@ void CHudMessage::MessageDrawScan(client_message_t* pClientMessage, float time, 
 			m_parms.lineLength++;
 			pText++;
 
-			if (m_parms.lineLength >= sizeof(line) / sizeof(wchar_t) - 1)
+			if (m_parms.lineLength >= sizeof(line) / sizeof(wchar_t))
 				break;
 		}
 
@@ -641,6 +640,8 @@ int CHudMessage::MsgFunc_HudTextArgs(const char* pszName, int iSize, void* pbuf)
 
 	if (dict && dict->m_pTextMessage)
 	{
+		std::wstring msg;
+
 		int slotNum = MessageAdd(dict->m_pTextMessage, cl_time, hintMessage, -1, m_hFont);
 
 		if (slotNum > -1)
@@ -778,14 +779,11 @@ void CHudMessage::MessageAdd(client_textmessage_t* newMessage)
 
 client_textmessage_t* pfnTextMessageGet(const char* pName)
 {
-	if (g_pViewPort)
-	{
-		CDictionary *dict = g_pViewPort->FindDictionary(pName);
+	CDictionary* dict = g_pViewPort->FindDictionary(pName);
 
-		if (dict && dict->m_pTextMessage)
-		{
-			return NULL;
-		}
+	if (dict && dict->m_pTextMessage)
+	{
+		return NULL;
 	}
 
 	return gEngfuncs.pfnTextMessageGet(pName);

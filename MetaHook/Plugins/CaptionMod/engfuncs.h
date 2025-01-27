@@ -29,7 +29,6 @@ typedef struct
 	sfxcache_t *(*S_LoadSound)(sfx_t *s, channel_t *ch);
 	void *(**pfnClientFactory)(void);
 	FARPROC (WINAPI *GetProcAddress)(HMODULE hModule, LPCSTR lpProcName);
-	hook_t *hk_GetProcAddress;
 	double *pcl_time;
 	double *pcl_oldtime;
 	char szLanguage[32];
