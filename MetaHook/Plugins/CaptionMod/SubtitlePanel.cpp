@@ -373,15 +373,16 @@ void SubtitlePanel::StartSubtitle(CDictionary *Dict, float flStartTime)
 		}
 	}
 
-	std::wstring sentence;
+	Dict->ReplaceKey();
 
-	Dict->FinalizeString(sentence);
+	if(m_iPrefix)
+		Dict->AddPrefix();
 
 	int iPanelWidth = GetWide();
 	int iMaxTextWidth = iPanelWidth - (m_iScaledXSpace << 1);
 
 	wchar_t szBuf[4096];
-	wchar_t *pStart = &sentence[0];
+	wchar_t *pStart = &Dict->m_szSentence[0];
 	wchar_t *p = pStart;
 
 	if(!pStart[0])

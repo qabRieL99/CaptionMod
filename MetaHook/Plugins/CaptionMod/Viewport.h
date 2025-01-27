@@ -15,9 +15,6 @@
 #include <VGUI_controls/Frame.h>
 #include "libcsv/csv_document.h"
 #include <sequence.h>
-#include <regex>
-
-#define HUDMESSAGE_MAXLENGTH 2048
 
 class SubtitlePanel;
 class CHudMessage;
@@ -29,8 +26,6 @@ enum dict_t
 	DICT_SOUND,
 	DICT_MESSAGE,
 	DICT_SENTENCE,
-	DICT_NETMESSAGE,
-	DICT_SENDAUDIO,
 };
 
 enum textalign_t
@@ -47,20 +42,23 @@ public:
 	CDictionary();
 	~CDictionary();
 	void Load(CSV::CSVDocument::row_type &row, Color &defaultColor, vgui::IScheme *ischeme);
-	void FinalizeString(std::wstring &output);
+	void ReplaceKey(void);
+	void ReplaceReturn(void);
+	void AddPrefix(void);
 
 	dict_t					m_Type;
 	char					m_szTitle[64];
-	std::wstring			m_szSentence;
+	CUtlVector<wchar_t>		m_szSentence;
 	Color					m_Color;
 	float					m_flDuration;
-	std::wstring			m_szSpeaker;
+	CUtlVector<wchar_t>		m_szSpeaker;
 	float					m_flNextDelay;
 	char					m_szNext[64];
 	CDictionary				*m_pNext;
 	client_textmessage_t	*m_pTextMessage;
 	textalign_t				m_iTextAlign;
-	bool					m_bRegex;
+	bool					m_bKeyReplaced;
+	bool					m_bPrefixAdded;
 };
 
 typedef struct hash_item_s
@@ -89,9 +87,7 @@ public:
 	void SetParent(vgui::VPANEL vPanel);
 	void ActivateClientUI(void);
 	void HideClientUI(void);
-	void LoadBaseDictionary(void);
-	void LoadCustomDictionary(const char *dict_name);
-	void LinkDictionary(void);
+	void LoadDictionary(void);
 
 	//Subtitle Interface
 	void StartSubtitle(CDictionary *dict);
@@ -100,7 +96,6 @@ public:
 	//Dictionary Hashtable
 	CDictionary *FindDictionary(const char *szValue);
 	CDictionary *FindDictionary(const char *szValue, dict_t Type);
-	CDictionary *FindDictionaryRegex(const std::string &str, dict_t Type, std::smatch &result);
 	int CaseInsensitiveHash(const char *string, int iBounds);
 	void EmptyDictionaryHash(void);
 	void AddDictionaryHash(CDictionary *dict, const char *value);
@@ -113,7 +108,6 @@ private:
 	SubtitlePanel *m_pSubtitle;
 	CUtlVector<CDictionary *> m_Dictionary;	
 	CUtlVector<hash_item_t> m_StringsHashTable;
-	char m_szLevelName[256];
 };
 
 extern CViewport *g_pViewPort;
