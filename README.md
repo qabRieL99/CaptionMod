@@ -1,8 +1,6 @@
 # CaptionMod (legacy)
 
-This repository has been archived as legacy, any future update goes here : [MetaHookSv](https://github.com/hzqst/MetaHookSv) -> [CaptionMod](https://github.com/hzqst/MetaHookSv/blob/main/docs/CaptionMod.md)
-
-该代码库已经归档，任何与CaptionMod相关的后续更新都在此处：[MetaHookSv](https://github.com/hzqst/MetaHookSv) -> [CaptionMod](https://github.com/hzqst/MetaHookSv/blob/main/docs/CaptionMod.md)
+This project has been archived as legacy, any future update goes here : [MetaHookSv](https://github.com/hzqst/MetaHookSv) -> [CaptionMod](https://github.com/hzqst/MetaHookSv/blob/main/CaptionMod.md)
 
 # 
 
